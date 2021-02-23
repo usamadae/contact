@@ -5,7 +5,7 @@ const fs = require('fs');
 const app = express();
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/contactus', {useNewUrlParser: true, useUnifiedTopology: true});
-const port = 80;
+const port = process.env.PORT || 80;
 
 // EXPRESS SPECIFIC STUFF
 app.use('/static' , express.static('/static')); // For serving static files
