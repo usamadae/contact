@@ -4,8 +4,8 @@ const path = require('path');
 const fs = require('fs');
 const app = express();
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/contactus', {useNewUrlParser: true, useUnifiedTopology: true});
-const port = process.env.PORT || 80;
+mongoose.connect('mongodb+srv://mongod:mongo@cluster1.t633u.mongodb.net/usama?retryWrites=true&w=majority/contact', {useNewUrlParser: true, useUnifiedTopology: true});
+const port = process.env.PORT || 800;
 
 // EXPRESS SPECIFIC STUFF
 app.use('/static' , express.static('/static')); // For serving static files
@@ -47,9 +47,10 @@ const kittySchema = new mongoose.Schema({
 app.post('/' , (req , res)=>{
     let myData = new contact1(req.body);
     myData.save().then(()=>{
-        res.send("This item saved on database")
-    }).catch(()=>{
         res.status(400).send("Item not saved")
+       
+    }).catch(()=>{
+        res.send("This item saved on database")
     })
  
 })
